@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <!-- Custom -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <title>Diamond Rock Fuel Solutions</title>
+  </head>
+  <body>
+    {% include 'partials/_navbar.html' %} 
+    {% block content %} 
+    {% endblock content %} 
+    {% include 'partials/_footer.html' %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
