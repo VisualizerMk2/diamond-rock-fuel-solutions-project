@@ -9,7 +9,7 @@
             <h3>Edit Profile</h3>
             <p>Fill in address information below</p>
             {% load crispy_forms_tags %}
-            <form method="POST" >
+            <form method="POST" novalidate>
               {% csrf_token %}
               <div class="form-group">
                 {{ form.full_name | as_crispy_field }}

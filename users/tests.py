@@ -36,6 +36,10 @@ class UserFormsTest(TestCase):
     form = CustomUserChangeForm()
     
     def test_form_placeholders(self):
+      self.assertEqual(self.form.fields['full_name'].widget.attrs['placeholder'], 'Full Name')
+      self.assertEqual(self.form.fields['full_name'].label, '')
+      self.assertEqual(self.form.fields['company_name'].widget.attrs['placeholder'], 'Company Name')
+      self.assertEqual(self.form.fields['company_name'].label, '')
       self.assertEqual(self.form.fields['address1'].widget.attrs['placeholder'], 'Address 1')
       self.assertEqual(self.form.fields['address1'].label, '')
       self.assertEqual(self.form.fields['address2'].widget.attrs['placeholder'], 'Address 2')

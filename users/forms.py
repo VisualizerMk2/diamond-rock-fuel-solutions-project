@@ -40,6 +40,10 @@ class CustomUserChangeForm(UserChangeForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+        self.fields['full_name'].widget.attrs['placeholder'] = 'Full Name'
+        self.fields['full_name'].label = ''
+        self.fields['company_name'].widget.attrs['placeholder'] = 'Company Name'
+        self.fields['company_name'].label = ''
         self.fields['address1'].widget.attrs['placeholder'] = 'Address 1'
         self.fields['address1'].label = ''
         self.fields['address2'].widget.attrs['placeholder'] = 'Address 2'
