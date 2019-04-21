@@ -24,11 +24,13 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Hello {{ user.full_name }}!
+            Hello {{ user.username }}!
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href={% url 'profile' %}>View Profile</a>
             <a class="dropdown-item" href={% url 'edit' %}>Edit Profile</a>
+            <a class="dropdown-item" href={% url 'get_quote' %}>Get Quote</a>
+            <a class="dropdown-item" href={% url 'quotes' %}>Past Quotes</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href={% url 'logout' %}>Logout</a>
           </div>
@@ -46,8 +48,6 @@
         </li>
       </ul>
     </div>
-    
-
     {% endif %}
   </div>
 </nav>

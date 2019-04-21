@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+<section>
+  <div id="get-quote" class="bg-primary">
+    <div class="row">
+      <div class="col-lg-6 text-light my-5 mx-auto">
+        <div class="card bg-secondary text-center card-form p-5">
+          <div class="card-body">
+            <h3>Enter Information for Fuel Quote</h3>
+            {% load crispy_forms_tags %}
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                {{ form.gallons_requested | as_crispy_field }}
+              </div>
+              <div class="form-group">
+                {{ form.delivery_street | as_crispy_field }}
+              </div>
+              <div class="form-group">
+                {{ form.delivery_state | as_crispy_field }}
+              </div>
+              <div class="form-group">
+                {{ form.delivery_zipcode | as_crispy_field }}
+              </div>
+              <div class="form-group">
+                {{ form.delivery_date | as_crispy_field }}
+              </div>
+              <input
+                type="submit"
+                value="Submit"
+                class="btn btn-dark btn-outline-light  btn-lg btn-block"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
+<section class="bg-primary">
+  <div class="row">
+    <div class="col-lg-6 text-light my-5 mx-auto">
+      <div class="card bg-secondary text-center card-form p-5">
+        <div class="card-body">
+          <h3 class="display-4">Please log in to fill out quote form.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %} {% endblock content %}

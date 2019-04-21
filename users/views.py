@@ -13,7 +13,8 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    template_name='pages/signup.html'
+    template_name = 'pages/signup.html'
+
 
 def profile(request):
     context = {
@@ -21,26 +22,25 @@ def profile(request):
     }
     return render(request, 'pages/profile.html', context)
 
-def edit_profile(request):
 
+def edit_profile(request):
     if request.method == 'POST':
         form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
             print('Form successfully saved')
             return redirect('/users/profile')
-    
+        else:
+            form = CustomUserChangeForm(instance=request.user)
+            context = {
+                "form": form,
+            }
+            return render(request, 'pages/edit_profile.html', context)
+
     else:
         form = CustomUserChangeForm(instance=request.user)
         context = {
             "form": form,
-
         }
         return render(request, 'pages/edit_profile.html', context)
-
-
-    return render(request, 'pages/edit_profile.html', context)
-
-def quotes(request):
-    return render(request, 'pages/quotes.html')
 

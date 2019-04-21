@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+
+<section id="quote-list" class="bg-primary">
+  <div class="row">
+    <div class="col-lg-6 m-5 mx-auto">
+      <div class="card bg-secondary">
+        <div class="card-body">
+          <table class="table text-light">
+            <thead>
+              <tr>
+                <th scope="col">Date Requested</th>
+                <th scope="col">Delivery Street</th>
+                <th scope="col">Delivery State</th>
+                <th scope="col">Gallon Requested</th>
+                <th scope="col">Total Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for object in object_list %}
+              <tr>
+                <td scope="row">{{ object.delivery_date }}</td>
+                <td scope="row">{{ object.delivery_street }}</td>
+                <td scope="row">{{ object.delivery_state }}</td>
+                <td scope="row">{{ object.gallons_requested }}</td>
+                <td scope="row">{{ object.total_amount_due }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

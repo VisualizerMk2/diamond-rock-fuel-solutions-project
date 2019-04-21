@@ -21,9 +21,10 @@
     <title>Diamond Rock Fuel Solutions</title>
   </head>
   <body>
-    {% include 'partials/_navbar.html' %} 
-    {% block content %} 
-    {% endblock content %} 
+    {% include 'partials/_navbar.html' %}
+    <div class="bg-primary">
+      {% block content %} {% endblock content %}
+    </div>
     {% include 'partials/_footer.html' %}
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
