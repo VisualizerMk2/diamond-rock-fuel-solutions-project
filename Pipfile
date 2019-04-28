@@ -9,7 +9,7 @@ django-localflavor = "*"
 django-crispy-forms = "*"
 coverage = "*"
 gunicorn = "*"
-bootstrap-datepicker-plus = "*"
+django-bootstrap-datepicker-plus = "*"
 
 [dev-packages]
 
