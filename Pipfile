@@ -8,6 +8,7 @@ django = "*"
 django-localflavor = "*"
 django-crispy-forms = "*"
 coverage = "*"
+gunicorn = "*"
 
 [dev-packages]
 

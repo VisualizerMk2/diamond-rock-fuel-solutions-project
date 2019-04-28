@@ -25,7 +25,7 @@ SECRET_KEY = '-)wtz&nbww9ifb99zuht%#&wjw3(@p!qcvm0t0z#x64ojbjo2t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # 3rd PARTY APPS
     'localflavor',
     'crispy_forms',
+    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [

@@ -1,5 +1,6 @@
 body {
   margin-top: 60px;
+  height: 85vh;
 }
 
 .home-inner {
@@ -27,6 +28,11 @@ body {
 }
 
 #get-quote {
+  position: relative;
+  min-height: 710px;
+}
+
+#quote-list {
   position: relative;
   min-height: 710px;
 }
