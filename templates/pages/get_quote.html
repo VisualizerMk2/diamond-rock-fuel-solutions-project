@@ -2,7 +2,19 @@
 {% block extrahead %}
 {{ form.media }}
 {% endblock extrahead %}
-
+{% if user.address1 == None or user.zipcode == None or user.state == None %}
+<section id="get-quote" class="bg-primary">
+  <div class="row">
+    <div class="col-lg-6 text-light m-4 mx-auto">
+      <div class="card bg-secondary text-center card-form p-5">
+        <div class="card-body">
+          <p class="lead"><a class="text-light" href="{% url 'edit' %}">Please click here fill out address information before placing an order.</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% else %}
 <section>
   <div id="get-quote" class="bg-primary">
     <div class="row">
@@ -45,6 +57,7 @@
     </div>
   </div>
 </section>
+{% endif %}
 
 {% else %}
 <section class="bg-primary">

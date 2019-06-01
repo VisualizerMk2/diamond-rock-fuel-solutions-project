@@ -25,7 +25,7 @@ SECRET_KEY = '-)wtz&nbww9ifb99zuht%#&wjw3(@p!qcvm0t0z#x64ojbjo2t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -88,8 +88,11 @@ WSGI_APPLICATION = 'dr_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'drfs',
+        'USER': 'postgres',
+        'PASSWORD': 'carWash20!',
+        'HOST': 'localhost'
     }
 }
 

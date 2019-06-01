@@ -2,17 +2,16 @@
 {% if user.is_authenticated %}
 <section id="quote-list" class="bg-primary">
   <div class="row">
-    <div class="col-lg-10 m-5 mx-auto">
+    <div class="col-md-10 m-5 mx-auto">
       <div class="card bg-secondary">
         <div class="card-body">
           <table class="table text-light">
             <thead>
               <tr>
-                <th scope="col">Order #</th>
                 <th scope="col">Date Requested</th>
                 <th scope="col">Delivery Street</th>
                 <th scope="col">Delivery State</th>
-                <th scope="col">Gallon Requested</th>
+                <th scope="col">Gallons Requested</th>
                 <th scope="col">PPG</th>
                 <th scope="col">Discounts</th>
                 <th scope="col">Total Cost</th>
@@ -21,7 +20,6 @@
             <tbody>
               {% for object in object_list %}
               <tr>
-                <td scope="row">{{ object.id }}</td>
                 <td scope="row">{{ object.delivery_date }}</td>
                 <td scope="row">{{ object.delivery_street }}</td>
                 <td scope="row">{{ object.delivery_state }}</td>

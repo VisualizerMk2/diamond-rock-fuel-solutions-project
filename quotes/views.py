@@ -1,12 +1,31 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from .models import FuelQuote, FuelQuoteModifier
 from .forms import FuelQuoteModelForm
+from decimal import *
 # Create your views here.
 
-def quote_detail_page(request, id):
-  obj = get_object_or_404(FuelQuote, id=id)
+def quote_detail_page(request, fuel_quote_id):
+  obj = get_object_or_404(FuelQuote, id=fuel_quote_id)
   context = {"object": obj}
   return render(request, 'pages/quote.html', context)
+
+def quote_confirmation_page(request, quote_id):
+  obj = get_object_or_404(FuelQuote, id=quote_id)
+
+  context = {
+    'obj': obj
+  }
+
+  if request.method=='POST' and 'confirm' in request.POST:
+    obj.save()
+    return redirect(reverse('quotes'))
+  elif request.method=='POST' and 'delete' in request.POST:
+    obj.delete()
+    return redirect(reverse('get_quote'))
+    
+  
+  return render(request,'pages/quote_confirmation.html', context)
+
 
 
 def quotes(request):
@@ -48,21 +67,29 @@ def get_quote(request):
       price_per_gallon = price_per_gallon - 0.05
       discounts = obj.gallons_requested * 0.05
     else:
-      pass
+      discounts = 0
 
     # APPLY TRANSPORTATION
-    if obj.delivery_state not in {'Texas'}:
+    if obj.delivery_state not in ['TX']:
       price_per_gallon = price_per_gallon + 0.90
 
     # CALCULATE TOTAL AMOUNT DUE
+    price_per_gallon = price_per_gallon * (1 + profit_margin)
     obj.total_amount_due = (obj.gallons_requested * price_per_gallon) * (1 + profit_margin)
     obj.price_per_gallon = price_per_gallon
 
     #CALCULATE TOTAL DISCOUNTS
     obj.discounts = discounts
 
+    context = {
+      "quote_amount": obj.total_amount_due,
+      "quote_id": obj.id,
+      "obj": obj
+    }
+
     obj.save()
-    return redirect('quotes')
+    quote_id = obj.id
+    return redirect('confirm', quote_id)
   context = {
     "form": form,
     "user": user
